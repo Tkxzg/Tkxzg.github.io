@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingeniero en Programación | Portafolio</title>
+
+  <style>
+    :root {
+      --blanco: #ffffff;
+      --rojo: #c4161c;
+      --negro: #0f0f0f;
+      --gris: #2a2a2a;
+      .cta h3 {
+        color: var(--negro);
+}
+
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--negro);
+      color: var(--blanco);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--negro), var(--gris));
+      padding: 80px 20px;
+      text-align: center;
+      border-bottom: 4px solid var(--rojo);
+    }
+
+    header h1 {
+      font-size: 3rem;
+    }
+
+    header h2 {
+      font-size: 1.4rem;
+      color: var(--rojo);
+      font-weight: 400;
+    }
+
+    .foto-perfil {
+      width: 180px;
+      margin: 20px auto;
+      display: block;
+      border: 4px solid var(--rojo);
+      box-shadow: 0 8px 20px rgba(0,0,0,.6);
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .header-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 22px;
+      background-color: var(--negro);
+      color: var(--blanco);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 25px;
+      border: 1px solid #333;
+      transition: transform .3s, background-color .3s;
+    }
+
+    .header-btn img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .header-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .header-btn.github:hover { background:#333; }
+    .header-btn.gmail:hover { background:var(--rojo); }
+
+    .disabled {
+      opacity:.5;
+      cursor:not-allowed;
+    }
+
+    main {
+      max-width:1100px;
+      margin:0 auto;
+      padding:60px 20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:40px;
+    }
+
+    section {
+      background:#151515;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,.5);
+    }
+
+    section h3 {
+      color:var(--rojo);
+      margin-bottom:15px;
+    }
+
+    .cta {
+      grid-column:1/-1;
+      text-align:center;
+      background:linear-gradient(135deg,var(--rojo),#8f0f14);
+    }
+
+    footer {
+      text-align:center;
+      padding:30px;
+      border-top:1px solid #333;
+      font-size:.85rem;
+      color:#aaa;
+    }
+
+    footer span { color:var(--rojo); font-weight:bold; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1 id="nombre"></h1>
+  <img src="perfil.png" class="foto-perfil" />
+  <h2 id="titulo"></h2>
+
+  <!-- BOTONES SUPERIORES (PC-FIRST) -->
+  <div class="header-links">
+    <a href="https://github.com/Tkxzg" target="_blank" class="header-btn github">
+      <img src="git.png" alt="GitHub">
+      GitHub
+    </a>
+
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=franypunto.o@gmail.com"
+       target="_blank" class="header-btn gmail">
+      <img src="gmail.png" alt="Gmail">
+      Gmail_PC
+    </a>
+
+    <span class="header-btn disabled">
+      CV (próximamente)
+    </span>
+  </div>
+
+</header>
+
+<main>
+  <section>
+    <h3>Perfil Profesional</h3>
+    <p id="perfil"></p>
+  </section>
+
+  <section>
+    <h3>Especialización</h3>
+    <p id="especializacion"></p>
+  </section>
+
+  <section>
+    <h3>Enfoque de Trabajo</h3>
+    <p id="enfoque"></p>
+  </section>
+
+  <!-- CTA INFERIOR (MÓVIL-FRIENDLY) -->
+  <section class="cta">
+    <h3>¿Trabajamos juntos?</h3>
+    <p>Contáctame directamente o guarda mis datos.</p>
+
+    <div class="header-links">
+      <a href="https://www.instagram.com/tkxzgx" target="_blank" class="header-btn">
+        <img src="ig.png" alt="Instagram">
+        Instagram
+      </a>
+
+      <a href="mailto:franypunto.o@gmail.com" class="header-btn gmail">
+        <img src="gmail.png" alt="Gmail">
+        Gmail_Telefonos
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 · Desarrollado por <span id="footerNombre"></span> · Instagram: <span id="instagram"></span>
+</footer>
+
+<script type="application/json" id="data">
+{
+  "nombre":"Ingeniero en Programación Tkxzg.",
+  "titulo":"Soluciones tecnológicas modernas, seguras y escalables",
+  "perfil":"Ingeniero en programación enfocado en soluciones eficientes.",
+  "especializacion":"Desarrollo, automatización y optimización.",
+  "enfoque":"Comunicación clara y resultados medibles.",
+  "instagram":"@tkxzgx"
+}
+</script>
+
+<script>
+const d = JSON.parse(document.getElementById("data").textContent);
+nombre.textContent=d.nombre;
+titulo.textContent=d.titulo;
+perfil.textContent=d.perfil;
+especializacion.textContent=d.especializacion;
+enfoque.textContent=d.enfoque;
+instagram.textContent=d.instagram;
+footerNombre.textContent=d.nombre;
+</script>
+
+</body>
+</html>
